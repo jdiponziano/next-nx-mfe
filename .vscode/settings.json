@@ -1,0 +1,22 @@
+{
+  "cSpell.words": [
+    "buildable",
+    "commitlint",
+    "Hotspots",
+    "nrwl",
+    "parens",
+    "stylelint",
+    "svgr",
+    "tailwindcss",
+    "viewports",
+    "Xfinity"
+  ],
+  "editor.formatOnSave": true,
+  "stylelint.validate": ["css", "scss", ".module.scss"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
+}

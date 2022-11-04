@@ -1,0 +1,4 @@
+/apps/host/node_modules/**
+/apps/host/ios/**
+/apps/host/electron/node_modules/**
+/apps/host/electron/app/_next/**

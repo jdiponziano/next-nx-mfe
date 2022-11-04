@@ -1,0 +1,9 @@
+{
+  "name": "host",
+  "devDependencies": {
+    "@capacitor/cli": "^4.3.0"
+  },
+  "dependencies": {
+    "@capacitor-community/electron": "^4.1.2"
+  }
+}

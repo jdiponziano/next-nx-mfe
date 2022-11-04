@@ -1,0 +1,195 @@
+{
+  "name": "host",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/host",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/host",
+        "outputPath": "dist/apps/host"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/host"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "host:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "host:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "host:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "host:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/host"],
+      "options": {
+        "jestConfig": "apps/host/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/host/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "stylelint": {
+      "executor": "nx-stylelint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/host/**/*.css",
+          "apps/host/**/*.module.scss"
+        ],
+        "formatter": "json"
+      }
+    },
+    "cap": {
+      "executor": "nx:run-commands",
+      "configurations": {
+        "any": {
+          "command": "npx cap {args.command}",
+          "cwd": "apps/host/src"
+        },
+        "sync": {
+          "commands": ["nx run host:build:production", "npx cap sync"],
+          "parallel": false,
+          "cwd": "apps/host/src"
+        },
+        "open-ios": {
+          "command": "npx cap open ios",
+          "cwd": "apps/host/src"
+        },
+        "open-android": {
+          "command": "npx cap open android",
+          "cwd": "apps/host/src"
+        },
+        "run-ios": {
+          "command": "npx cap run ios",
+          "cwd": "apps/host/src"
+        },
+        "run-android": {
+          "command": "npx cap run android",
+          "cwd": "apps/host/src"
+        }
+      },
+      "defaultConfiguration": "any"
+    },
+    "add": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "add"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "add ios"
+        },
+        "android": {
+          "cmd": "add android"
+        }
+      }
+    },
+    "copy": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "copy"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "copy ios"
+        },
+        "android": {
+          "cmd": "copy android"
+        }
+      }
+    },
+    "open": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "open"
+      },
+      "configurations": {
+        "desktop": {
+          "cmd": "open @capacitor-community/electron"
+        },
+        "ios": {
+          "cmd": "open ios"
+        },
+        "android": {
+          "cmd": "open android"
+        }
+      }
+    },
+    "run": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "run"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "run ios"
+        },
+        "android": {
+          "cmd": "run android"
+        }
+      }
+    },
+    "sync": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "sync"
+      },
+      "configurations": {
+        "desktop": {
+          "cmd": "sync @capacitor-community/electron"
+        },
+        "ios": {
+          "cmd": "sync ios"
+        },
+        "android": {
+          "cmd": "sync android"
+        }
+      }
+    },
+    "update": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "update"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "update ios"
+        },
+        "android": {
+          "cmd": "update android"
+        }
+      }
+    }
+  },
+  "tags": []
+}
